@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>LawHelper-Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<style type="text/css">
+tbody td{text-align: center!important;}
+</style>
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h3 >
+  <a href="admin.html" style="color:#fff;">LawHelper<br/>
+  Admin</a>
+  </h3>
+</div>
+<!--close-Header-part--> 
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">欢迎，xxx</span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+       <li class="divider"></li>
+        <li>
+        	<a href="#"><i class="icon-check"></i> 修改密码</a>
+        </li>
+      </ul>
+    </li>
+    <li class="">
+    	<a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">退出登录</span></a>
+    </li>
+  </ul>
+</div>
+<!--close-top-serch--> 
+
+<!--sidebar-menu-->
+
+<div id="sidebar">
+<a href="#" class="visible-phone"><i class="icon icon-home"></i></a>
+  <ul>
+    <li ><a href="admin.html"><i class="icon icon-home"></i> <span>问题列表</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-list"></i> <span>系统功能</span></a>
+      <ul>
+        <li><a href="form-common.html">系统用户</a></li>
+        <li><a href="form-validation.html">系统配置</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="admin.html" title="问题列表" class="tip-bottom"><i class="icon-home"></i>问题列表</a></div>
+  </div>
+  <div  class="quick-actions_homepage">
+    <ul class="quick-actions">
+      <li class="bg_lb"> <a href="#"> <i class="icon-list"></i>问题列表</a> </li>
+      <li class="bg_lg"> <a href="#"> <i class="icon-user"></i> 系统用户</a> </li>
+      <li class="bg_ly"> <a href="#"> <i class="icon-cog"></i> 系统配置</a> </li>
+    </ul>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+      	<table class="table table-bordered" style="text-align: center; background: #fff;">
+      		<thead>
+      			<tr>
+      				<th>NO.</th><th>关键字</th><th>回答</th><th>操作</th>
+      			</tr>
+      		</thead>
+      		<tbody>
+      			<tr>
+      				<td>1</td><td>你/是/谁</td><td>我是法律小助手</td><td><a class="btn btn-warning btn-sm"><i class="icon icon-edit"></i></a></td>
+      			</tr>
+      			<tr>
+      				<td>2</td><td>你/是/谁</td><td>我是法律小助手</td><td><a class="btn btn-warning btn-sm"><i class="icon icon-edit"></i></a></td>
+      			</tr>
+      			<tr>
+      				<td>3</td><td>你/是/谁</td><td>我是法律小助手</td><td><a class="btn btn-warning btn-sm"><i class="icon icon-edit"></i></a></td>
+      			</tr>
+      			<tr>
+      				<td>4</td><td>你/是/谁</td><td>我是法律小助手</td><td><a class="btn btn-warning btn-sm"><i class="icon icon-edit"></i></a></td>
+      			</tr>
+      			<tr>
+      				<td>5</td><td>你/是/谁</td><td>我是法律小助手</td><td><a class="btn btn-warning btn-sm"><i class="icon icon-edit"></i></a></td>
+      			</tr>
+      			<tr>
+      				<td>6</td><td>你/是/谁</td><td>我是法律小助手</td><td><a class="btn btn-warning btn-sm"><i class="icon icon-edit"></i></a></td>
+      			</tr>
+      		</tbody>
+      		<tbody>
+      			<tr>
+      				<td colspan="4">
+      					<div class="pagination">
+						  <ul>
+						    <li><a href="#">Prev</a></li>
+						    <li><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li><a href="#">Next</a></li>
+						  </ul>
+						</div>
+      				</td>
+      			</tr>
+      		</tbody>
+      	</table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Footer-part-->
+<div class="row-fluid">
+  <div id="footer" class="span12"> <p>Copyright&copy;2016 法律小助手 -xxxx专业-xxx级-xxx同学</p></div>
+</div>
+<!--end-Footer-part-->
+<script src="js/excanvas.min.js"></script> 
+<script src="js/jquery.min.js"></script> 
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flot.min.js"></script> 
+<script src="js/jquery.flot.resize.min.js"></script> 
+<script src="js/jquery.peity.min.js"></script> 
+<script src="js/matrix.js"></script> 
+<script src="js/fullcalendar.min.js"></script> 
+<script src="js/matrix.calendar.js"></script> 
+<script src="js/matrix.chat.js"></script> 
+<script src="js/jquery.validate.js"></script> 
+<script src="js/matrix.form_validation.js"></script> 
+<script src="js/jquery.wizard.js"></script> 
+<script src="js/jquery.uniform.js"></script> 
+<script src="js/select2.min.js"></script> 
+<script src="js/matrix.popover.js"></script> 
+<script src="js/jquery.dataTables.min.js"></script> 
+<script src="js/matrix.tables.js"></script> 
+<script src="js/matrix.interface.js"></script> 
+<script type="text/javascript">
+  function goPage (newURL) {
+      // if url is empty, skip the menu dividers and reset the menu selection to default
+      if (newURL != "") {
+          // if url is "-", it is this page -- reset the menu:
+          if (newURL == "-" ) {
+              resetMenu();            
+          } 
+          // else, send page to designated URL            
+          else {  
+            document.location.href = newURL;
+          }
+      }
+  }
+
+// resets the menu selection upon entry to this page:
+function resetMenu() {
+   document.gomenu.selector.selectedIndex = 2;
+}
+</script>
+</body>
+</html>

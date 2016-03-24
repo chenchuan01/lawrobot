@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+#robotImg{
+	cursor: pointer;
+}
+#robotImg:HOVER,.rowCycle{
+	opacity: 1;
+	filter: alpha(opacity = 100);
+	-webkit-transition: all 1200ms ease-out 0ms;
+	-moz-transition: all 1200ms ease-out 0ms;
+	-o-transition: all 1200ms ease-out 0ms;
+	transition: all 1200ms ease-out 0ms;
+	-webkit-transform: rotateY(360deg) scale(1, 1);
+	-moz-transform: rotateY(360deg) scale(1, 1);
+	-ms-transform: rotateY(360deg) scale(1, 1);
+	-o-transform: rotateY(360deg) scale(1, 1);
+	transform: rotateY(360deg) scale(1, 1);
+}
