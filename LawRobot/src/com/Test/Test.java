@@ -1,14 +1,16 @@
 package com.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 
 import com.strong.GenerateDictionary;
-import com.strong.ImportCorpus;
 import com.strong.Segmentation;
 
 public class Test {
 
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) throws IOException {
 
 		String filename = "dic.txt";

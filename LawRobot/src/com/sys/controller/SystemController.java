@@ -182,11 +182,4 @@ public class SystemController extends BaseController {
 		return "sys/logList";
 	}
 
-	@RequestMapping(value = "invokeComarea")
-	public String comarea(Integer peopleId, String saveUrl, Model m) {
-		m.addAttribute("peopleId", peopleId);
-		m.addAttribute("saveUrl", saveUrl);
-		return "common/camera";
-	}
-
 }
