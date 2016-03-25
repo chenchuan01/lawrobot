@@ -1,11 +1,11 @@
-package cn.Test;
+package com.Test;
 
 import java.io.*;
 import java.util.HashMap;
 
-import cn.strong.GenerateDictionary;
-import cn.strong.ImportCorpus;
-import cn.strong.Segmentation;
+import com.strong.GenerateDictionary;
+import com.strong.ImportCorpus;
+import com.strong.Segmentation;
 
 public class Test {
 

@@ -1,4 +1,4 @@
-package cn.strong;
+package com.strong;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

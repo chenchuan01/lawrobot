@@ -1,4 +1,4 @@
-package cn.strong;
+package com.strong;
 
 import java.util.HashMap;
 
