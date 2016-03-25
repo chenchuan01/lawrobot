@@ -3,10 +3,8 @@ package com.sys.common.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.SpringContextHolder;
 import com.sys.SysConstants;
 import com.sys.common.AppExpection;
-import com.sys.common.Params;
 
 /**
  * @author chenchuan
@@ -86,7 +84,6 @@ public class LogUtil {
 	 */
 	public static void error(Class<?> clazz, String methodName, String context,
 			Object... params) {
-
 		context = "methodName=>(" + methodName + ");error->" + context;
 		error(clazz, context, params);
 	}

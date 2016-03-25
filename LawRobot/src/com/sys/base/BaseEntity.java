@@ -1,7 +1,5 @@
 package com.sys.base;
 
-import com.SpringContextHolder;
-import com.sys.common.Params;
 
 /**
  * 
@@ -14,11 +12,7 @@ public class BaseEntity {
 
 	private String delflag = "0";// 删除标志
 
-	private String compflag;// 公司标志
-
 	public BaseEntity() {
-		setCompflag(((Params) SpringContextHolder
-				.getBean("params")).getComp_flag());
 	}
 
 	public Integer getId() {
@@ -37,14 +31,6 @@ public class BaseEntity {
 		this.delflag = delflag;
 	}
 
-	public String getCompflag() {
-		return compflag;
-	}
-
-	public void setCompflag(String compflag) {
-		this.compflag = compflag;
-	}
-	
 	public boolean notNull(){
 		return this!=null&&this.getId()!=null;
 	}
