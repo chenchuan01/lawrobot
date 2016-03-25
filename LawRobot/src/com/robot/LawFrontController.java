@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *LawFrontController.java
  */
 @Controller
-@RequestMapping()
+@RequestMapping("/front")
 public class LawFrontController {
-	
+	public 
 }
