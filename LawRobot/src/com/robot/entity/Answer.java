@@ -7,11 +7,17 @@ import com.sys.base.BaseEntity;
  *Answer.java
  */
 public class Answer extends BaseEntity{
+	private String question;
 	//问题关键字
-	public String keywords;
+	private String keywords;
 	//问题答案
-	public String answer;
+	private String answer;
 	
+	public Answer() {
+	}
+	public Answer(String question){
+		this.question = question;
+	}
 	public String getKeywords() {
 		return keywords;
 	}
@@ -23,6 +29,12 @@ public class Answer extends BaseEntity{
 	}
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+	public String getQuestion() {
+		return question;
+	}
+	public void setQuestion(String question) {
+		this.question = question;
 	}
 	
 	

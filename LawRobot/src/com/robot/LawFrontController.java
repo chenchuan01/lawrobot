@@ -2,6 +2,7 @@ package com.robot;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.robot.entity.Answer;
 
@@ -13,7 +14,7 @@ import com.robot.entity.Answer;
 @RequestMapping("/front")
 public class LawFrontController {
 	@RequestMapping("/ask")
-	public Answer askQuestion(String question){
-		return new Answer();
+	public @ResponseBody Answer askQuestion(String question){
+		return new Answer(question);
 	}
 }
