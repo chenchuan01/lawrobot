@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.sys.common.ConfigKeys;
-
 
 /**
  * @author chenchuan
@@ -193,29 +191,6 @@ public class DateUtil {
 		calendar.add(calculatemetric, range);
 		
 		return formatDate(calendar.getTime());
-	}
-	/**0正常，x即将到期,剩余几天，-1，已到期,-2 停卡
-	 * @param finalDate
-	 * @return
-	 */
-	public static int compareFinalDate(String finalDateStr) {
-		int limitNums = ConfigUtil.getIntVal(ConfigKeys.DUE_DATE);
-		String now = getToday();
-		Date today = parsDate(now);
-		Date finalDate = parsDate(finalDateStr);
-		Calendar cl = Calendar.getInstance();
-		cl.setTime(today);
-		cl.add(Calendar.DAY_OF_YEAR, limitNums);
-		Date countFinal = cl.getTime();
-		if(finalDate.getTime()>countFinal.getTime()){
-			return 0;
-		}else if(finalDate.getTime()<=countFinal.getTime()
-				&&finalDate.getTime()>=today.getTime()){
-			return ((int)(countFinal.getTime()-finalDate.getTime())/(1000*60*60*24));
-		}else{
-			return -1;
-		}
-		
 	}
 
 }

@@ -16,7 +16,6 @@ public class LogUtil {
 
 	private static Logger logger;
 	
-	private static Params sysParams = SpringContextHolder.getBean("params");
 
 	/**
 	 * info级别
@@ -37,9 +36,7 @@ public class LogUtil {
 	 * @param params
 	 */
 	public static void infoSql(Class<?> clazz, String context, Object... params) {
-		if(ConfigUtil.isSwitchOn(sysParams.getSql_log())){
 			info(clazz, SysConstants.SQL_LOG+"=>"+context, params);
-		}
 	}
 	/**
 	 * info级别
@@ -49,9 +46,7 @@ public class LogUtil {
 	 * @param params
 	 */
 	public static void infoReq(Class<?> clazz, String context, Object... params) {
-		if(ConfigUtil.isSwitchOn(sysParams.getReq_log())){
 			info(clazz, SysConstants.URL_LOG+"=>"+context, params);
-		}
 	}
 
 	/**

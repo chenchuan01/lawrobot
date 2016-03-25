@@ -1,12 +1,12 @@
-package com.Test;
+package com.test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 
-import com.strong.GenerateDictionary;
-import com.strong.Segmentation;
+import com.dic.GenerateDictionary;
+import com.dic.Segmentation;
 
 public class Test {
 
@@ -19,7 +19,7 @@ public class Test {
 		GenerateDictionary genDic = new GenerateDictionary();
 		Segmentation seg;
 
-		genDic.GenHashDic(filename, hm, len);
+		genDic.genHashDic(filename, hm, len);
 
 		System.out.println("请输入您需要分解的语句：");
 

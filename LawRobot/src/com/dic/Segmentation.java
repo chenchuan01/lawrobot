@@ -1,19 +1,22 @@
-package com.strong;
+package com.dic;
 
 import java.util.HashMap;
 
+/**
+ * 
+ * Segmentation.java
+ */
 public class Segmentation {
 
 	private String tem = null;
-	private HashMap mapDic, len;
+	private HashMap<?, ?> mapDic, len;
 
-	public Segmentation(HashMap mapDic, HashMap len) {
+	public Segmentation(HashMap<?, ?> mapDic, HashMap<?, ?> len) {
 		this.mapDic = mapDic;
 		this.len = len;
 	}
 
 	public String Fmm(String source) {
-		String[] targets = new String[source.length()];
 		String target = "";
 		int MaxLen = source.length();
 		int temLen = MaxLen;
@@ -73,4 +76,12 @@ public class Segmentation {
 		return target;
 	}
 
+	public HashMap<?, ?> getMapDic() {
+		return mapDic;
+	}
+
+	public void setMapDic(HashMap<?, ?> mapDic) {
+		this.mapDic = mapDic;
+	}
+	
 }

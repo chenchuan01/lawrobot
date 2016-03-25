@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sys.base.BaseController;
 import com.sys.common.AppExpection;
-import com.sys.common.ConfigKeys;
-import com.sys.common.util.ConfigUtil;
 import com.sys.common.util.SessionUtil;
 import com.sys.common.util.StringUtil;
 import com.sys.db.entity.User;
@@ -51,12 +49,6 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "verify")
 	public String verifyLogin(Model m, HttpSession session, String userName,
 			String password, String code) {
-		boolean verifyCodeRslt = verifyCode(session, code);
-		if (!verifyCodeRslt) {
-			return forwordExpPage(m, new AppExpection(
-					"LoginController.verifyLogin(User, Model, HttpSession)",
-					"验证码输入错误！"), LOGINPAGE);
-		}
 		if (StringUtil.isNull(userName) || StringUtil.isNull(password)) {
 			return forwordExpPage(m, new AppExpection(
 					"LoginController.verifyLogin(User, Model, HttpSession)",
@@ -76,28 +68,10 @@ public class LoginController extends BaseController {
 		return TO_INDEX;
 	}
 
-	private boolean verifyCode(HttpSession session, String code) {
-		if (ConfigUtil.isConfigSwitchOn(ConfigKeys.VERIFYCODE_SWITCH)) {
-			String sessionCode = (String) session.getAttribute("code");
-			if (StringUtil.isNull(code) || StringUtil.isNull(sessionCode)) {
-				return false;
-			}
-			if (!sessionCode.equalsIgnoreCase(code)) {
-				return false;
-			}
-		}
-		return true;
-	}
 
 	@RequestMapping(value = "regist")
 	public String registUser(User user, Model m, String code,
 			HttpSession session) {
-		boolean verifyCodeRslt = verifyCode(session, code);
-		if (!verifyCodeRslt) {
-			return forwordExpPage(m, new AppExpection(
-					"LoginController.registUser(User, Model, HttpSession)",
-					"验证码输入错误！"), LOGINPAGE);
-		}
 		if (user == null || StringUtil.isNull(user.getUserName())
 				|| StringUtil.isNull(user.getPassword())) {
 			return forwordExpPage(m,

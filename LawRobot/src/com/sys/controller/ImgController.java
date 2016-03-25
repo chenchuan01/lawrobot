@@ -4,26 +4,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.sys.common.ConfigKeys;
-import com.sys.common.util.ConfigUtil;
-import com.sys.common.util.ImgUtil;
-import com.sys.common.util.StringUtil;
 
 /**
  * 
@@ -119,32 +109,6 @@ public class ImgController {
 		return new Color(r, g, b);
 	}
 
-	@RequestMapping("/photo")
-	public void photo(String path, HttpServletResponse response)throws ServletException, IOException {
-		if(StringUtil.isNotNull(path)){
-			BufferedInputStream bis = null;
-			BufferedOutputStream bos = null;
-			String filePath = ConfigUtil.getStrVal(ConfigKeys.IMG_SAVEPATH);
-			filePath = ImgUtil.replaceFileSplit(filePath+path).toString();
-			File file = new File(filePath);
-			FileInputStream fips = new FileInputStream(file);
-			bis = new BufferedInputStream(fips);
-			bos = new BufferedOutputStream(response.getOutputStream());
-			byte[] buff = new byte[2048];
-			int bytesRead;
-			while (-1 != (bytesRead = bis.read(buff, 0, buff.length))) {
-				bos.write(buff, 0, bytesRead);
-			}
-			if (bis != null){
-				bis.close();
-			}
-				
-			if (bos != null){
-				bos.close();
-			}
-				
-		}
-	}
 	 /**
 	  * <b>function:</b> 随机生成字体、文字大小
 	  * @createDate 2010-8-23 上午10:44:22

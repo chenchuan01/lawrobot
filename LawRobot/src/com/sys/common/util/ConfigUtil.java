@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.SpringContextHolder;
-import com.sys.common.ConfigKeys;
 import com.sys.db.entity.Config;
 import com.sys.db.service.ConfigService;
 
@@ -88,28 +87,6 @@ public class ConfigUtil {
 		return list;
 	}
 	/**
-	 * 查询配置权限
-	 * @return
-	 */
-	public static Map<Integer, List<String>> authConfMap(){
-		Map<Integer, List<String>> authMap = new HashMap<Integer, List<String>>();
-		List<String> authList = getListVal(ConfigKeys.AUTH_CONF);
-		for (String authConf : authList) {
-			String[] items = authConf.split(K_V_SPLIT);
-			if(items!=null&&items.length>1){
-				Integer authKey = Integer.valueOf(items[0]);
-				List<String> authValue = new ArrayList<String>();
-				for (String val : items[1].split(V_SPLIT)) {
-					if(StringUtil.isNotNull(val)){
-						authValue.add(val);
-					}
-				}
-				authMap.put(authKey, authValue);
-			}
-		}
-		return authMap;
-	}
-	/**
 	 * 数据库系统开关是否开启
 	 * @param key
 	 * @return
@@ -149,19 +126,4 @@ public class ConfigUtil {
 		return configMap;
 	}
 
-	/**
-	 * 获得赠送会籍单位
-	 * @param givemetric
-	 * @return
-	 */
-	public static String getGiveMetric(String givemetric) {
-		List<String> metricConfigs = getListVal(ConfigKeys.DATE_METRIC);
-		for (String metric : metricConfigs) {
-			String[] items = metric.split(K_V_SPLIT);
-			if(givemetric.equalsIgnoreCase(items[0])){
-				return items[1];
-			}
-		}
-		return givemetric;
-	}
 }

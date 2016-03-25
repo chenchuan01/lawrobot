@@ -1,7 +1,12 @@
-package com.strong;
-import java.io.*;
-import java.util.HashMap;
+package com.dic;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
+/**
+ * 
+ * ImportCorpus.java
+ */
 public class ImportCorpus {
 	private FileInputStream fis;
 	private FileOutputStream fos;
