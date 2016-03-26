@@ -10,7 +10,7 @@ import com.sys.common.util.LogUtil;
 import com.sys.db.entity.User;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
-	private static final String[] IGNORE_URI = { "login", "regist","verify","code" };
+	private static final String[] IGNORE_URI = { "front","login", "regist","verify","code" };
 
 	@Override
 	public boolean preHandle(HttpServletRequest request,

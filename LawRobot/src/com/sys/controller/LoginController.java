@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sys.SysConstants;
 import com.sys.base.BaseController;
 import com.sys.common.AppExpection;
 import com.sys.common.util.SessionUtil;
@@ -27,9 +28,9 @@ import com.sys.db.service.UserService;
 @Controller
 @RequestMapping("/login")
 public class LoginController extends BaseController {
-	private static final String LOGINPAGE = "login/login";
+	private static final String LOGINPAGE = "bak/robotlogin";
 	private static final String REGISTPAGE = "login/regist";
-	private static final String TO_INDEX = "redirect:/index.do";
+	private static final String TO_INDEX = "redirect:/admin.do";
 	@Resource
 	UserService userService;
 
@@ -41,10 +42,6 @@ public class LoginController extends BaseController {
 		return LOGINPAGE;
 	}
 
-	@RequestMapping(value = "toregist")
-	public String toregist() {
-		return REGISTPAGE;
-	}
 
 	@RequestMapping(value = "verify")
 	public String verifyLogin(Model m, HttpSession session, String userName,
@@ -64,7 +61,7 @@ public class LoginController extends BaseController {
 		}
 
 		// µÇÂ¼ÑéÖ¤
-		session.setAttribute("sysuser", loginUser);
+		session.setAttribute(SysConstants.SYSUSER, loginUser);
 		return TO_INDEX;
 	}
 

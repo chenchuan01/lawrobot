@@ -1,6 +1,7 @@
 package com.robot.entity;
 
 import com.sys.base.BaseEntity;
+import com.sys.common.util.DateUtil;
 
 /**
  *
@@ -13,11 +14,25 @@ public class Answer extends BaseEntity{
 	//Œ Ã‚¥∞∏
 	private String answer;
 	
+	private String time;
+	
 	public Answer() {
+		
 	}
-	public Answer(String question){
+	
+	public Answer(String question, String keywords, String answer, String time) {
+		super();
 		this.question = question;
+		this.keywords = keywords;
+		this.answer = answer;
+		this.time = time;
 	}
+
+	public Answer(String hello) {
+		this.answer = hello;
+		this.time = DateUtil.getNow();
+	}
+
 	public String getKeywords() {
 		return keywords;
 	}
@@ -35,6 +50,12 @@ public class Answer extends BaseEntity{
 	}
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 	

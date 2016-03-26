@@ -34,5 +34,10 @@ public class SysConstants {
 	 * 无效
 	 */
 	public static final Integer VALID_OFF =0;
+
+	/**
+	 * 系统用户session变量名
+	 */
+	public static final String SYSUSER = "sysuser";
 	
 }

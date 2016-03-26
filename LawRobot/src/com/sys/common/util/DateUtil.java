@@ -15,7 +15,7 @@ public class DateUtil {
 	/**
 	 * 统一时间保持格式
 	 */
-	public static final String TIMEFORMAT="yyyy-MM-dd HH:mm";
+	public static final String TIMEFORMAT="yyyy-MM-dd HH:mm:ss";
 	/**
 	 * 统一日期保持格式
 	 */

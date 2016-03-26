@@ -1,19 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<title>LawHelper-Admin</title>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="css/fullcalendar.css" />
-<link rel="stylesheet" href="css/matrix-style.css" />
-<link rel="stylesheet" href="css/matrix-media.css" />
-<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
-<style type="text/css">
-tbody td{text-align: center!important;}
-</style>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+	request.setAttribute("basePath", basePath);
+	response.addHeader("pragma", "no-cache");
+	response.addHeader("cache-control", "no-cache");
+	response.addHeader("expires", "0");
+%>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<title>LawRobot-Admin</title>
+<link rel="shortcut icon" href="${ctx }/img/robot_space.png">
+<link rel="stylesheet" href="${ctx }/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${ctx }/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="${ctx }/css/matrix-style.css" />
+<link href="${ctx }/font-awesome/css/font-awesome.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -125,26 +133,13 @@ tbody td{text-align: center!important;}
   <div id="footer" class="span12"> <p>Copyright&copy;2016 法律小助手 -xxxx专业-xxx级-xxx同学</p></div>
 </div>
 <!--end-Footer-part-->
-<script src="js/excanvas.min.js"></script> 
-<script src="js/jquery.min.js"></script> 
-<script src="js/jquery.ui.custom.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/jquery.flot.min.js"></script> 
-<script src="js/jquery.flot.resize.min.js"></script> 
-<script src="js/jquery.peity.min.js"></script> 
-<script src="js/matrix.js"></script> 
-<script src="js/fullcalendar.min.js"></script> 
-<script src="js/matrix.calendar.js"></script> 
-<script src="js/matrix.chat.js"></script> 
-<script src="js/jquery.validate.js"></script> 
-<script src="js/matrix.form_validation.js"></script> 
-<script src="js/jquery.wizard.js"></script> 
-<script src="js/jquery.uniform.js"></script> 
-<script src="js/select2.min.js"></script> 
-<script src="js/matrix.popover.js"></script> 
-<script src="js/jquery.dataTables.min.js"></script> 
-<script src="js/matrix.tables.js"></script> 
-<script src="js/matrix.interface.js"></script> 
+<script src="${ctx }/js/jquery.min.js"></script> 
+<script src="${ctx }/js/jquery.ui.custom.js"></script> 
+<script src="${ctx }/js/bootstrap.min.js"></script> 
+<script src="${ctx }/js/jquery.flot.min.js"></script> 
+<script src="${ctx }/js/jquery.flot.resize.min.js"></script> 
+<script src="${ctx }/js/jquery.peity.min.js"></script> 
+<script src="${ctx }/js/matrix.js"></script> 
 <script type="text/javascript">
   function goPage (newURL) {
       // if url is empty, skip the menu dividers and reset the menu selection to default

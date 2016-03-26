@@ -2,6 +2,7 @@ package com.sys.common.util;
 
 import javax.servlet.http.HttpSession;
 
+import com.sys.SysConstants;
 import com.sys.db.entity.User;
 
 /**
@@ -11,6 +12,6 @@ import com.sys.db.entity.User;
  */
 public class SessionUtil {
 	public static User sysUser(HttpSession session){
-		return (User)session.getAttribute("sysuser");
+		return (User)session.getAttribute(SysConstants.SYSUSER);
 	}
 }

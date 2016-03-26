@@ -28,45 +28,7 @@ var ajaxHtml= function(url,dataArry,sucfun,errFun){
 		}
 	});
 };
-var ajaxLoad = function(url,dataArry,sucfun,errFun){
-	loadToggle();
-	$.ajax({
-		type:"POST",
-		url:url,
-		data:dataArry,
-		dataType:"json",
-		success:function(data){
-			loadToggle();
-			commonSuc(data,sucfun);
-		},
-		error:function(data){
-			loadToggle();
-			commonErr(data, errFun);
-		}
-	});
-	
-};
-var ajaxFile=function(url,fileId,dataArray,sucfun,errFun){
-	var peopleId = $('#peopleId').val();
-	loadToggle();
-	$.ajaxFileUpload({
-		    type:"POST",
-            url: url+"?id="+peopleId, 
-            secureuri: false, 
-            fileElementId:fileId,
-            dataType: 'text',
-            success: function (data,status){
-            	loadToggle();
-            	var rslt = eval("("+data+")");
-            	commonSuc(rslt[0], sucfun);
-            },
-            error: function (data,status, e){
-            	loadToggle();
-            	commonErr(data, errFun);
-            }
-        }
-    );
-};
+
 var commonSuc=function(data,sucfun){
 	if(data.msg){
 		error(data.msg);
@@ -74,39 +36,16 @@ var commonSuc=function(data,sucfun){
 	}
 	if(typeof(sucfun)=="function"){
 		sucfun(data);
-	}else{
-		sucInfoBox();
 	}
-	refreshCurPage();
 };
 var commonErr=function(data,errFun){
 	if(typeof(errFun)=="function"){
 		errFun(data);
 		return;
 	}
-	data = eval(data);
-	if(data&&data.msg){
-		error(data.msg);
-	}else{
-		errorInfoBox();
-	}
-	
 };
-var loadToggle=function(){
-	$('#load').toggle(50);
-	
-};
-var refreshCurPage=function(){
-	var pageId =getParentPageId();
-	if(pageId){
-		var obj=window.parent.document.getElementById(pageId);
-		if(obj&&obj.contentWindow){
-			obj.contentWindow.location.reload(true);
-		}
-		
-	}
-	
-};
+
+
 function getUrl(formId){
 	if(formId){
 		return $(formId).attr('action');

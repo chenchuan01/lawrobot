@@ -24,7 +24,6 @@
     	<property name="locations">
     		<list>
         		<value>classpath:db.properties</value>
-        		<value>classpath:parameter.properties</value>
     		</list>
     	</property>
     </bean>
@@ -36,35 +35,10 @@
 		<property name="username" value="${db.user}" />
 		<property name="password" value="${db.password}" />
 	</bean>
-	<!--  dataSource connection pool -->
-	<!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"   destroy-method="close">
-         <property name="driverClass"><value>com.mysql.jdbc.Driver</value></property>
-         <property name="jdbcUrl"><value>${db.url}</value></property>              
-         <property name="user"><value>${db.user}</value></property>
-         <property name="password"><value>${db.password}</value></property>
-         
-         <property name="minPoolSize"><value>1</value></property>
-         <property name="maxPoolSize"><value>20</value></property>
-         <property name="maxIdleTime"><value>1800</value></property>
-         <property name="acquireIncrement"><value>2</value></property>
-         <property name="maxStatements"><value>0</value></property>
-         <property name="initialPoolSize"><value>2</value></property>
-         <property name="idleConnectionTestPeriod"><value>60</value></property>
-         <property name="acquireRetryAttempts"><value>30</value></property>
-         <property name="breakAfterAcquireFailure"><value>true</value></property>
-         <property name="preferredTestQuery" ><value>SELECT 1</value></property>
-         <property name="testConnectionOnCheckout"><value>true</value></property>    
-	</bean> -->
 	<!-- jdbcTemplate -->
      <bean id = "jdbcTemplate" class = "org.springframework.jdbc.core.JdbcTemplate">   
          <property name = "dataSource" ref="dataSource"/>   
     </bean> 
-    <bean id="params" class="com.sys.common.Params">
-    	<property name="comp_flag" value="${comp.flag}"/>
-    	<property name="sql_log" value="${sys.sql.log}"/>
-    	<property name="req_log" value="${sys.req.log}"/>
-    	<property name="sys_user_roles" value="${sys.user.roles}"/>
-    </bean>
     <!-- file upload size -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
