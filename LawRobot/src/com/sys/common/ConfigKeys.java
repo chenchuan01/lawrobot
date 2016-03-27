@@ -21,5 +21,5 @@ public class ConfigKeys {
 	/**
 	 *×ÖµäÎÄ¼şÃû³Æ
 	 */
-	public static final String DIC_FILE = null;
+	public static final String DIC_FILE = "DIC_FILE";
 }

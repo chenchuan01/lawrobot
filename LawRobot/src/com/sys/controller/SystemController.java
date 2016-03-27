@@ -8,18 +8,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sys.SysConstants;
 import com.sys.base.BaseController;
 import com.sys.base.dto.PageResult;
 import com.sys.base.dto.QueryParam;
 import com.sys.common.AppExpection;
+import com.sys.common.util.StringUtil;
+import com.sys.db.DBConstants;
 import com.sys.db.entity.Config;
 import com.sys.db.entity.User;
 import com.sys.db.service.ConfigService;
 import com.sys.db.service.UserService;
 
 /**
- * @author chenchuan
- * @date 2016年1月22日 系统功能控制器
+ *系统功能控制器
  */
 @Controller
 @RequestMapping("/sys")
@@ -28,19 +30,7 @@ public class SystemController extends BaseController {
 	UserService userService;
 	@Resource
 	ConfigService configService;
-
-	/**
-	 * 用户列表
-	 * 
-	 * @param m
-	 * @return
-	 * @throws AppExpection
-	 */
-	@RequestMapping(value = "userList")
-	public String userList(Model m) {
-		return "sys/userList";
-	}
-
+	private static final String FORM_SPACE="bak/form/";
 	/**
 	 * 用户列表
 	 * 
@@ -51,6 +41,9 @@ public class SystemController extends BaseController {
 	@RequestMapping(value = "userPage")
 	public @ResponseBody PageResult<User> userListPage(QueryParam<User> params,
 			Model m, User user) {
+		if(user!=null&&StringUtil.isNotNull(user.getUserName())){
+			user.setUserName(DBConstants.CHAR_LIKE+user.getUserName()+DBConstants.CHAR_LIKE);
+		}
 		params.setParam(user);
 		PageResult<User> result = userService.pageQuery(params);
 		return result;
@@ -68,7 +61,7 @@ public class SystemController extends BaseController {
 	public String userForm(Integer id, Model m) {
 		User user = userService.findById(id);
 		m.addAttribute("user", user);
-		return "sys/userForm";
+		return FORM_SPACE+"userForm";
 	}
 
 	/**
@@ -83,7 +76,7 @@ public class SystemController extends BaseController {
 	public String pwdModify(Integer id, Model m) {
 		User user = userService.findById(id);
 		m.addAttribute("user", user);
-		return "sys/pwdModify";
+		return FORM_SPACE+"pwdModify";
 	}
 
 	/**
@@ -96,7 +89,12 @@ public class SystemController extends BaseController {
 	@RequestMapping(value = "userModify")
 	public @ResponseBody User userModify(User user, HttpSession session)
 			throws AppExpection {
-		userService.userUpdate(user);
+		if(user!=null&&user.getId()==null){
+			userService.userRegist(user);
+		}else{
+			userService.userUpdate(user);
+		}
+		
 		return user;
 	}
 
@@ -107,24 +105,11 @@ public class SystemController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "userDelete")
-	public String userDelete(Integer id) {
+	public @ResponseBody User userDelete(Integer id) {
 		User user = userService.findById(id);
 		userService.deleteEntity(user);
-		return "redirect:/sys/userList.do";
+		return user;
 	}
-
-	/**
-	 * 系统配置列表
-	 * 
-	 * @param m
-	 * @return
-	 * @throws AppExpection
-	 */
-	@RequestMapping(value = "configList")
-	public String configList(Model m) throws AppExpection {
-		return "sys/configList";
-	}
-
 	/**
 	 * 系统配置分页查询
 	 * 
@@ -136,6 +121,14 @@ public class SystemController extends BaseController {
 	public @ResponseBody PageResult<Config> configListPage(
 			QueryParam<Config> params, Model m, Config config)
 			throws AppExpection {
+		if(config!=null){
+			if(StringUtil.isNotNull(config.getKey())){
+				config.setKey(DBConstants.CHAR_LIKE+config.getKey()+DBConstants.CHAR_LIKE);
+			}
+			if(StringUtil.isNotNull(config.getValue())){
+				config.setValue(DBConstants.CHAR_LIKE+config.getValue()+DBConstants.CHAR_LIKE);
+			}
+		}
 		params.setParam(config);
 		PageResult<Config> result = configService.pageQuery(params);
 		return result;
@@ -153,7 +146,7 @@ public class SystemController extends BaseController {
 	public String configForm(Integer id, Model m) throws AppExpection {
 		Config config = configService.findById(id);
 		m.addAttribute("config", config);
-		return "sys/configForm";
+		return FORM_SPACE+"configForm";
 	}
 
 	/**
@@ -166,20 +159,12 @@ public class SystemController extends BaseController {
 	@RequestMapping(value = "configModify")
 	public @ResponseBody Config configModify(Config config, HttpSession session)
 			throws AppExpection {
-		configService.updateEntity(config);
+		if(config!=null&&config.getId()==null){
+			configService.saveEntity(config);
+		}else{
+			configService.updateEntity(config);
+		}
+		
 		return config;
 	}
-
-	/**
-	 * 日志列表
-	 * 
-	 * @param m
-	 * @return
-	 * @throws AppExpection
-	 */
-	@RequestMapping(value = "logList")
-	public String logList(Model m) {
-		return "sys/logList";
-	}
-
 }

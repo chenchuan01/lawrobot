@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.robot.db.Answer;
 import com.robot.dto.Question;
-import com.robot.entity.Answer;
 import com.sys.common.util.DateUtil;
 
 /**

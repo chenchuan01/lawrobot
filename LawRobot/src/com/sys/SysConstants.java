@@ -39,5 +39,10 @@ public class SysConstants {
 	 * 系统用户session变量名
 	 */
 	public static final String SYSUSER = "sysuser";
+
+	/**
+	 * namespace
+	 */
+	public static final String FORM_SPACE = "bak/form/";
 	
 }

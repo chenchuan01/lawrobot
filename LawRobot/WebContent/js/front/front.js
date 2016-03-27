@@ -1,6 +1,4 @@
-﻿$(function(){
-	loadFontPage();
-});
+﻿
 function loadFontPage(){
 	$('#send').click(askQuestion);
 	setTimeout('hello()',1000);

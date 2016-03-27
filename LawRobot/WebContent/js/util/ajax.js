@@ -1,15 +1,18 @@
 ﻿/**ajax*/
 /*************Ajax封装***************/
 var ajaxData = function(url,dataArry,sucfun,errFun){
+	loadToggle();
 	$.ajax({
 		type:"POST",
 		url:url,
 		data:dataArry,
 		dataType:"json",
 		success:function(data){
+			loadToggle();
 			commonSuc(data,sucfun);
 		},
 		error:function(data){
+			loadToggle();
 			commonErr(data, errFun);
 		}
 	});
@@ -28,7 +31,6 @@ var ajaxHtml= function(url,dataArry,sucfun,errFun){
 		}
 	});
 };
-
 var commonSuc=function(data,sucfun){
 	if(data.msg){
 		error(data.msg);
@@ -44,11 +46,12 @@ var commonErr=function(data,errFun){
 		return;
 	}
 };
-
-
 function getUrl(formId){
 	if(formId){
 		return $(formId).attr('action');
 	}
 	return $('form[action]').first().attr('action');
 }
+var loadToggle=function(){
+	$('#load').toggle(50);
+};

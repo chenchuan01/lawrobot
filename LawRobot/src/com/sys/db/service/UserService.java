@@ -34,7 +34,6 @@ public class UserService extends BaseService<User>{
 	 * @throws AppExpection 
 	 */
 	public User userUpdate(User user) throws AppExpection {
-		userDao.encryption(user);
 		userDao.update(user);
 		return user;
 	}

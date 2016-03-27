@@ -93,6 +93,6 @@ public class LoginController extends BaseController {
 		String basePath = request.getScheme() + "://" + request.getServerName()
 				+ ":" + request.getServerPort() + request.getContextPath()
 				+ "/";
-		response.sendRedirect(basePath);
+		response.sendRedirect(basePath+"login.do");
 	}
 }

@@ -1,4 +1,6 @@
 @CHARSET "UTF-8";
+thead th{padding: 15px 10px 12px!important;}
+tbody td{text-align: center!important;}
 #robotImg{
 	cursor: pointer;
 }
@@ -21,4 +23,35 @@
 }
 .popover-content{
 	word-break:break-all;
+}
+.pagination{
+	margin: 0px;
+}
+/* 加载  goal_load */
+#load{
+	width: 99.9%;
+	height: 99.9%;
+	margin: 0;
+	padding: 0;
+	display: none;
+}
+#load_bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	z-index: 1001;
+	-moz-opacity: 0.6;
+	opacity: .60;
+	filter: alpha(opacity = 60);
+}
+#load_show {
+	position: absolute;
+	top: 49%;
+	left: 49%;
+	padding: 8px;
+	z-index: 1002;
+	overflow: auto;
 }

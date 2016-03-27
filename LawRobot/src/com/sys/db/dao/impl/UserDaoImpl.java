@@ -10,21 +10,19 @@ import com.sys.db.dao.UserDao;
 import com.sys.db.entity.User;
 
 /**
- * @author chenchuan
- * @date 2016Äê1ÔÂ22ÈÕ 
  * UserDaoImpl.java
  */
 @Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 
 	public User verify(User user) {
-		encryption(user);
+//		encryption(user);
 		List<User> users =find(user);
 		return users==null||users.isEmpty()?null:users.get(0);
 	}
 
 	public User regist(User user) {
-		encryption(user);
+//		encryption(user);
 		return save(user).get(0);
 	}
 	/**

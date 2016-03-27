@@ -35,14 +35,24 @@
 				  <div class="panel-body" style="height: 85%;">
 				    <div class="col-md-9" style="height: 100%;">
 				    	<!-- 消息区 -->
-				    	<div class="panel"style="height: 79%;">
+				    	<div class="panel"style="height: 78%;">
 				    		 <div class="panel-body" style="height:100%">
-				    		 	<div id="msgAre" class="form-control"  style="height:100%;overflow-y:auto;word-break:break-all;font-size: 12px;">
+				    		 	<div style="width:100%">
+								    <select  id="zone" class="form-control" style="width: 49.8%;display: inline-block;" placeholder="请选择地区" >
+								    	<option>请选择地区</option>
+								    	<option value="">地区</option>
+								    </select>
+								    <select  id="filed" class="form-control" style="width: 49.8%;display: inline-block;" placeholder="请选择领域" >
+								    	<option>请选择领域</option>
+								    	<option value="">领域</option>
+								    </select>
+				    		 	</div>
+				    		 	<div id="msgAre" class="form-control"  style="height:90%;overflow-y:auto;word-break:break-all;font-size: 12px;">
 				    		 	</div>
 				    		 </div>
 				    	</div>
 				    	<!-- 编辑区 -->
-				    	<div class="panel"style="height: 19%;">
+				    	<div class="panel"style="height: 18%;">
 				    		 <div class="panel-body" style="height: 100%;">
 				    		 	<div class="col-md-10"  style="height: 100%;">
 				    		 		<textarea id="question" style="height: 100%;width: 100%;overflow-y:auto;word-break:break-all; resize:none;padding: 4px;" 
@@ -91,6 +101,10 @@
 <script type="text/javascript" src="${ctx }/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/util/ajax.js"></script>
 <script type="text/javascript" src="${ctx }/js/front/front.js"></script>
-
+<script type="text/javascript">
+$(function(){
+	loadFontPage();
+});
+</script>
 </body>
 </html>
