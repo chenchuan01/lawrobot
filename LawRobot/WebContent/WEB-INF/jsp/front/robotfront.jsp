@@ -83,8 +83,8 @@
 				    		 			 <label>
 										  	<i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;About Me
 										 </label>
-						    		 	<div id="robotIntrduce" class="form-control" style="height:100%;overflow-y:auto;word-break:break-all;">
-						    		 		
+						    		 	<div id="robotIntrduce" class="form-control" style="height:100%;padding-top:20%;overflow-y:auto;word-break:break-all;">
+						    		 		${sys:getStrVal('LAWROBOT_DES') }
 						    		 	</div>
 							    	</div>
 				    		 	</div>
@@ -103,6 +103,7 @@
 <!-- vendor -->
 <script type="text/javascript" src="${ctx }/js/jquery.min.js"></script>
 <script type="text/javascript" src="${ctx }/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${ctx }/js/bootstrap-typeahead.js"></script>
 <script type="text/javascript" src="${ctx }/js/util/ajax.js"></script>
 <script type="text/javascript" src="${ctx }/js/front/front.js"></script>
 <script type="text/javascript">

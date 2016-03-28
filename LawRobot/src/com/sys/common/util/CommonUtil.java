@@ -13,8 +13,6 @@ import com.sys.db.DBConstants;
 
 /**
  *
- *@author chenchuan
- *@date 2016年2月16日
  *CommonUtil.java
  *系统功能工具方法
  */
@@ -172,27 +170,37 @@ public class CommonUtil {
 		}
 		return list;
 	}
-	private static void perm(String[] buf, int start, int end,List<String> combineWords) {
-        if (start == end) {// 当只要求对数组中一个字母进行全排列时，只要就按该数组输出即可
-            for (int i = 0; i <= end; i++) {
-            	combineWords.add(buf[i]);
-            }
-        } else {// 多个字母全排列
-            for (int i = start; i <= end; i++) {
-                String temp = buf[start];// 交换数组第一个元素与后续的元素
-                buf[start] = buf[i];
-                buf[i] = temp;
-                perm(buf, start + 1, end,combineWords);// 后续元素递归全排列
-                temp = buf[start];// 将交换后的数组还原
-                buf[start] = buf[i];
-                buf[i] = temp;
-            }
-        }
+	private static void perm(String[] buf, int start, int end,List<String> combineWords,String tempWords) {
+		if(start==end){
+			return;
+		}
+		String temp = tempWords;
+		if(start<end){
+			for (int i = start; i < end;i++) {
+				if(StringUtil.isNull(temp)){
+					temp = temp+ buf[i];
+				}else{
+					temp = temp +"/"+ buf[i];
+				}
+				combineWords.add(temp);
+			}
+		}else{
+			start++;
+			perm(buf, start, end, combineWords, tempWords);
+		}
+		
     }
 	public static List<String> combineWords(String[] keyWords) {
 		List<String> combineWords = new ArrayList<String>();
-		perm(keyWords, 0, keyWords.length, combineWords);
+		for (int i = 0; i < keyWords.length; i++) {
+			perm(keyWords, i, keyWords.length, combineWords,"");
+		}
+		
+		
 		return combineWords;
 	}
- 
+	public static void main(String[] args) {
+		String[] like = {"讲","个","笑话"};
+		System.out.println(combineWords(like));
+	}
 }

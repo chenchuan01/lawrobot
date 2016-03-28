@@ -89,8 +89,10 @@ public class LawAdminController {
 	public @ResponseBody Answer answerModify(Answer answer, HttpSession session)
 			throws AppExpection {
 		if(answer!=null&&answer.getId()==null){
+			answer.setTime("");
 			answerService.saveEntity(answer);
 		}else{
+			answer.setTime("");
 			answerService.updateEntity(answer);
 		}
 		

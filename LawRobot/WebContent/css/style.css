@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 thead th{padding: 15px 10px 12px!important;}
-tbody td{text-align: center!important;}
+tbody td{text-align: center!important;max-width: 220px;}
 #robotImg{
 	cursor: pointer;
 }

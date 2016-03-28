@@ -2,6 +2,8 @@ package com.dic;
 
 import java.util.HashMap;
 
+import com.sys.common.AppExpection;
+
 /**
  * 
  * Segmentation.java
@@ -42,7 +44,10 @@ public class Segmentation {
 		return target;
 	}
 
-	public String Bmm(String source) {
+	public String Bmm(String source) throws AppExpection {
+		if(source.length()>16){
+			throw new AppExpection();
+		}
 		String[] targets = new String[source.length()];
 		String target="";
 		int MaxLen = source.length();

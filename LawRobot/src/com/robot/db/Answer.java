@@ -53,6 +53,20 @@ public class Answer extends BaseEntity{
 		this.time = DateUtil.getNow();
 	}
 
+	public Answer(String quest, String key) {
+		this.question=quest;
+		this.keywords=key;
+	}
+
+	public Answer(String question, String keywords, String answer,
+			String zone, String filed) {
+		this.question=question;
+		this.keywords=keywords;
+		this.answer = answer;
+		this.zone = zone;
+		this.filed = filed;
+	}
+
 	public String getKeywords() {
 		return keywords;
 	}

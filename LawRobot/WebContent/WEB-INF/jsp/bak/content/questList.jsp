@@ -52,7 +52,7 @@ $(function(){page(1);});
 		</tr>
 		<thead>
 			<tr>
-				<th>#</th><th>地区</th><th>领域</th><th>关键字</th><th>问题</th><th>答案</th><th>操作</th>
+				<th>#</th><th>地区</th><th>领域</th><th>关键字</th><th style="max-width: 350px;">问题</th><th style="max-width: 350px;">答案</th><th>操作</th>
 			</tr>
 		</thead>
 		<tbody id="tableData"></tbody>

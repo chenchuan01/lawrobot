@@ -20,6 +20,7 @@ import com.robot.dto.Question;
 import com.sys.common.AppExpection;
 import com.sys.common.util.CommonUtil;
 import com.sys.common.util.DateUtil;
+import com.sys.common.util.LogUtil;
 import com.sys.common.util.StringUtil;
 import com.sys.db.DBConstants;
 
@@ -38,26 +39,39 @@ public class LawFrontController {
 	}
 	@RequestMapping("/hello")
 	public @ResponseBody Answer hello() throws InterruptedException{
-		Thread.sleep(1000);
+		Thread.sleep(800);
 		return new Answer("你好！我是法律小助手，我叫小L！");
 	}
 	@RequestMapping("/ask")
 	public @ResponseBody Question askQuestion(Question question) throws InterruptedException{
-		Thread.sleep(100);
+		Thread.sleep(800);
 		question.setTime(DateUtil.getNow());
 		return question;
 	}
 	@RequestMapping("/query")
-	public @ResponseBody Answer queryQuestion(Answer question) throws AppExpection{
+	public @ResponseBody Answer queryQuestion(Answer question) throws AppExpection, InterruptedException{
+		Thread.sleep(500);
 		String quest = question.getQuestion();
 		DictionaryManage dictionaryManage = (DictionaryManageImpl)SpringContextHolder.getBean("dictionaryManage");
 		Segmentation dicSeg= dictionaryManage.getSegmentation();
-		String quertKeyWords = dicSeg.Fmm(quest);
-		question.setQuestion("");
-		question.setTime("");
+		String quertKeyWords="";
+		List<Answer> answersList = new ArrayList<Answer>();
+		try {
+			quertKeyWords = dicSeg.Bmm(quest);
+			//查询时按地区和领域搜索
+			question.setQuestion("");
+			question.setTime("");
+			
+		} catch (Exception e) {
+			quertKeyWords = quest;
+			LogUtil.error(getClass(), new AppExpection("LawFrontController.queryQuestion()","分词失败："+quest));
+			question.setQuestion(DBConstants.CHAR_LIKE+quest+DBConstants.CHAR_LIKE);
+		}
 		//找到查询地区和问题的所有回答
-		List<Answer> answersList = answerService.find(question);
-		return queryAnswer(answersList,quertKeyWords);
+		answersList= answerService.find(question);
+		//未知答案时保存问题
+		question.setQuestion(quest);
+		return queryAnswer(question,answersList,quertKeyWords);
 	}
 	
 	/**
@@ -68,7 +82,7 @@ public class LawFrontController {
 	 * @param quertKeyWords
 	 * @return
 	 */
-	private Answer queryAnswer(List<Answer> answersList, String quertKeyWords) {
+	private Answer queryAnswer(Answer question,List<Answer> answersList, String quertKeyWords) {
 		String[] keyWords = quertKeyWords.split("/");
 		/**
 		 * 分词后的关键字，
@@ -79,20 +93,25 @@ public class LawFrontController {
 		List<String> combineWords = CommonUtil.combineWords(keyWords);
 		for (String combine : combineWords) {
 			for (Answer answer : answersList) {
-				if(combine.contains(answer.getKeywords())||
-						answer.getKeywords().contains(combine)){
+				if(combine.equalsIgnoreCase(answer.getKeywords())||
+						combine.contains(answer.getKeywords())||
+						answer.getQuestion().contains(combine)){
 					answer.setTime(DateUtil.getNow());
 					return answer;
 				}
 			}
 		}
-		return new Answer(quertKeyWords,"","对不起，我暂不知道相关问题怎么回答，需要继续学习学习！",DateUtil.getNow());
+		answerService.saveEntity(new Answer(question.getQuestion(),"","",question.getZone(),question.getFiled()));
+		return new Answer(quertKeyWords,"","对不起，我暂不知道相关问题怎么回答，需要继续学习学习！或者尝试选择其他地区或领域咨询！",DateUtil.getNow());
 	}
 	@RequestMapping("/typehead")
 	public @ResponseBody List<Answer> typehead(Answer query){
 		if(query!=null&&StringUtil.isNotNull(query.getQuestion())){
-			query.setQuestion(DBConstants.CHAR_LIKE+query.getQuestion()+DBConstants.CHAR_LIKE);
-			return answerService.find(query);
+			
+			query.setKeywords(DBConstants.CHAR_LIKE+query.getQuestion()+DBConstants.CHAR_LIKE);
+			query.setQuestion("");
+			List<Answer> list = answerService.find(query);
+			return list;
 		}
 		return new ArrayList<Answer>();
 	}

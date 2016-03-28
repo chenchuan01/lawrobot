@@ -7,11 +7,12 @@ import java.util.HashMap;
 
 import com.dic.GenerateDictionary;
 import com.dic.Segmentation;
+import com.sys.common.AppExpection;
 
 public class Test {
 
 	@SuppressWarnings("rawtypes")
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, AppExpection {
 
 		String filename = "dic.txt";
 		HashMap hm = new HashMap();
@@ -30,10 +31,10 @@ public class Test {
 		
 		seg = new Segmentation(hm, len);
 		
-		String FmmTarget = seg.Fmm(data);
+//		String FmmTarget = seg.Fmm(data);
 		String BmmTarget = seg.Bmm(data);
 		
-		System.out.println("FMM算法统计结果为: " + FmmTarget);
+//		System.out.println("FMM算法统计结果为: " + FmmTarget);
 		System.out.println("BMM算法统计结果为: " + BmmTarget);
 	}
 

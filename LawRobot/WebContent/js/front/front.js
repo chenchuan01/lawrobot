@@ -2,6 +2,7 @@
 function loadFontPage(){
 	$('#send').click(askQuestion);
 	setTimeout('hello()',1000);
+	queryTypeHead();
 }
 function hello(){
 	thinkId=thinking();
@@ -38,7 +39,11 @@ function clearThink(){
 function askQuestion(){
 	var question = $('#question');
 	var questContent = question.val();
-	if(questContent!='undefined'&&questContent!=''&&questContent!=null){
+	if(questContent.length>20){
+		var data={msg:"请将问题描述控制在20字以内！"};
+		sysError(data);
+	}
+	if(questContent!='undefined'&&questContent!=''&&questContent!=null&&questContent.length<=20){
 		question.val('');
 		var param = {'content':questContent};
 		thinkId=thinking();
@@ -58,7 +63,7 @@ function showAskMsg(data){
 function queryAnswer(question){
 	var zone_index = $('#zone_index').val();
 	var filed_index = $('#filed_index').val();
-	var param={'time':question.time,'question':question.content,'zone':zone_index,'filed_index':filed_index};
+	var param={'time':question.time,'question':question.content,'zone':zone_index,'filed':filed_index};
 	ajaxData('front/query.do',param,showAnswer,sysError);
 }
 function showAnswer(data){
@@ -99,3 +104,45 @@ $('#robotImg').attr('data-content',message);
 $('#robotImg').popover('show');
 $('#robotImg').focus();
 }
+var queryTypeHead= function() {
+	var questionInput = $("#question");
+	var answerMap = {};
+	var showSelect = {};
+	questionInput.typeahead({
+		source : function(query, process) {
+			var parameter = {
+				question : query
+			};
+			if(1 <= query.length){
+				$.ajax({
+					url : "front/typehead.do",
+					type : 'POST',
+					dataType : 'JSON',
+					async : true,
+					data : parameter,
+					success : function(data) {
+						var arr = [];
+						for (i in data) {
+							var answer = data[i];
+							var key =answer.question;
+							answerMap[answer.id]=answer;
+							showSelect[key] = answer.id;
+							arr.push(key);
+						};
+						process(arr);
+					}
+				});
+			};
+		},
+		matcher: function (item) {
+		    return true;
+		},
+		highlighter: function(item) {
+	        return item;
+	    },
+	    updater: function (item) {
+	    	var answer =answerMap[showSelect[item]];
+	        return answer.question;
+	    }
+	});
+};
