@@ -30,11 +30,12 @@ public class GenerateDictionary {
 			IOException {
 		String s = new String();
 		BufferedReader in = new BufferedReader(new FileReader(filename));
+		LogUtil.info(getClass(), "Refresh Dictionary Cache...");
 		while ((s = in.readLine()) != null) {
 			hm.put(s, s.length());
 			len.put(s.length(), s);
 		}
-		LogUtil.info(getClass(), "字典文件刷新成功；共计：{0}条数据", len.size());
+		LogUtil.info(getClass(), "Refresh Dictionary Cache: 字典文件刷新成功；共计：{0}条数据", len.size());
 		in.close();
 	}
 

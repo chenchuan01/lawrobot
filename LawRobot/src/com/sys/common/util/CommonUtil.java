@@ -151,14 +151,14 @@ public class CommonUtil {
 		
 		return fidldValue;
 	}
-	public static String format(String msg ,String... params) {
+	public static String format(String msg ,Object... params) {
 		if(params==null||params.length<=0){
 			return msg;
 		}else{
 			String temp = msg;
 			for (int i = 0; i < params.length; i++) {
 				String holderStr = "{"+i+"}";
-				temp = temp.replace(holderStr, params[i]);
+				temp = temp.replace(holderStr,params[i]+"");
 			}
 			return temp;
 		}
@@ -172,5 +172,27 @@ public class CommonUtil {
 		}
 		return list;
 	}
-	
+	private static void perm(String[] buf, int start, int end,List<String> combineWords) {
+        if (start == end) {// 当只要求对数组中一个字母进行全排列时，只要就按该数组输出即可
+            for (int i = 0; i <= end; i++) {
+            	combineWords.add(buf[i]);
+            }
+        } else {// 多个字母全排列
+            for (int i = start; i <= end; i++) {
+                String temp = buf[start];// 交换数组第一个元素与后续的元素
+                buf[start] = buf[i];
+                buf[i] = temp;
+                perm(buf, start + 1, end,combineWords);// 后续元素递归全排列
+                temp = buf[start];// 将交换后的数组还原
+                buf[start] = buf[i];
+                buf[i] = temp;
+            }
+        }
+    }
+	public static List<String> combineWords(String[] keyWords) {
+		List<String> combineWords = new ArrayList<String>();
+		perm(keyWords, 0, keyWords.length, combineWords);
+		return combineWords;
+	}
+ 
 }

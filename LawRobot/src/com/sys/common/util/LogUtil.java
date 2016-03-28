@@ -24,6 +24,7 @@ public class LogUtil {
 	 */
 	public static void info(Class<?> clazz, String context, Object... params) {
 		logger = LoggerFactory.getLogger(clazz);
+		context = CommonUtil.format(context,params);
 		logger.info(context, params);
 	}
 	/**

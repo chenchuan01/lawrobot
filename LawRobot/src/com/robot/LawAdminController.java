@@ -45,7 +45,7 @@ public class LawAdminController {
 	 * @return
 	 * @throws AppExpection
 	 */
-	@RequestMapping(value = "answerPage")
+	@RequestMapping(value = "questPage")
 	public @ResponseBody PageResult<Answer> AnswerListPage(QueryParam<Answer> params,
 			Model m, Answer answer) {
 		if(answer!=null&&StringUtil.isNotNull(answer.getZone())){
@@ -70,11 +70,11 @@ public class LawAdminController {
 	 * @return
 	 * @throws AppExpection
 	 */
-	@RequestMapping(value = "answerForm")
+	@RequestMapping(value = "questForm")
 	public String AanswerForm(Integer id, Model m) {
 		Answer answer = answerService.findById(id);
 		m.addAttribute("answer", answer);
-		return SysConstants.FORM_SPACE+"AnswerForm";
+		return SysConstants.FORM_SPACE+"questForm";
 	}
 
 
@@ -85,7 +85,7 @@ public class LawAdminController {
 	 * @return
 	 * @throws AppExpection
 	 */
-	@RequestMapping(value = "answerModify")
+	@RequestMapping(value = "questModify")
 	public @ResponseBody Answer answerModify(Answer answer, HttpSession session)
 			throws AppExpection {
 		if(answer!=null&&answer.getId()==null){
@@ -103,7 +103,7 @@ public class LawAdminController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "answerDelete")
+	@RequestMapping(value = "questDelete")
 	public @ResponseBody Answer answerDelete(Integer id) {
 		Answer answer = answerService.findById(id);
 		answerService.deleteEntity(answer);

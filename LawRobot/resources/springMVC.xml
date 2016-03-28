@@ -31,4 +31,6 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<bean id="springHolder" class="com.SpringContextHolder" />
+	<!-- Dictionary Manager -->
+	<bean id="dictionaryManage" class="com.dic.impl.DictionaryManageImpl"/>
 </beans>

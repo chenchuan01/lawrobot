@@ -33,7 +33,7 @@ var ajaxHtml= function(url,dataArry,sucfun,errFun){
 };
 var commonSuc=function(data,sucfun){
 	if(data.msg){
-		error(data.msg);
+		sysError(data);
 		return;
 	}
 	if(typeof(sucfun)=="function"){

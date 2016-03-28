@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@include file="../common/taglib.jspf" %>
 <div class="span5">
 <form id="userForm" class="form-horizontal" action="sys/userModify.do" method="post">
   <div class="control-group">

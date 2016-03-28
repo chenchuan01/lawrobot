@@ -34,6 +34,7 @@ function clearThink(){
 		
 	}
 }
+
 function askQuestion(){
 	var question = $('#question');
 	var questContent = question.val();
@@ -55,7 +56,9 @@ function showAskMsg(data){
 }
 
 function queryAnswer(question){
-	var param={'time':question.time,'content':question.content};
+	var zone_index = $('#zone_index').val();
+	var filed_index = $('#filed_index').val();
+	var param={'time':question.time,'question':question.content,'zone':zone_index,'filed_index':filed_index};
 	ajaxData('front/query.do',param,showAnswer,sysError);
 }
 function showAnswer(data){
@@ -65,8 +68,11 @@ function showAnswer(data){
 	clearThink();
 	setRobotImg('answered');
 	$('#msgAre').append(answerContent);
-	setTimeout('function(){setRobotImg(\'space\');}',1000);
+	setTimeout('space',1000);
 	focusBottom();
+}
+function space(){
+	setRobotImg('space');
 }
 function focusBottom(){
 	var msgAre = document.getElementById('msgAre');
@@ -79,8 +85,8 @@ function setRobotImg(img_subfix){
 function sysError(data){
 	clearThink();
 	setRobotImg('syserror');
-	if(data&&data.content){
-		errorTip(data.content);
+	if(data&&data.msg){
+		errorTip(data.msg);
 	}
 }
 

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ include file="../bak/common/taglib.jspf" %>
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -38,13 +36,19 @@
 				    	<div class="panel"style="height: 78%;">
 				    		 <div class="panel-body" style="height:100%">
 				    		 	<div style="width:100%">
-								    <select  id="zone" class="form-control" style="width: 49.8%;display: inline-block;" placeholder="请选择地区" >
-								    	<option>请选择地区</option>
-								    	<option value="">地区</option>
+								    <select  id="zone_index" class="form-control" style="width: 49.8%;display: inline-block;" >
+								    	<c:forEach items="${sys:getListVal('ZONE_INDEX') }" var="zoneItem">
+									  		<c:set var="zone_index" value="${fn:split(zoneItem,':')[0] }"/>
+									  		<c:set var="zone_content" value="${fn:split(zoneItem,':')[1] }"/>
+									  		<option value="${zone_index }">${zone_content }</option>
+									  	</c:forEach>
 								    </select>
-								    <select  id="filed" class="form-control" style="width: 49.8%;display: inline-block;" placeholder="请选择领域" >
-								    	<option>请选择领域</option>
-								    	<option value="">领域</option>
+								    <select  id="filed_index" class="form-control" style="width: 49.8%;display: inline-block;" >
+								    	<c:forEach items="${sys:getListVal('FILED_INDEX') }" var="filedItem">
+									  		<c:set var="filed_index" value="${fn:split(filedItem,':')[0] }"/>
+									  		<c:set var="filed_content" value="${fn:split(filedItem,':')[1]}"/>
+									  		<option value="${filed_index }">${filed_content }</option>
+									  	</c:forEach>
 								    </select>
 				    		 	</div>
 				    		 	<div id="msgAre" class="form-control"  style="height:90%;overflow-y:auto;word-break:break-all;font-size: 12px;">

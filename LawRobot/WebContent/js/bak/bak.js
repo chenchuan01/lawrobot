@@ -215,6 +215,11 @@ var $singledData= function(dataMap,filed){
  * 获得属性值
  */
 var $getDataVal=function(dataMap,filed){
+	if('zone'==filed){
+		return zone_index[dataMap[filed]];
+	}else if('filed'==filed){
+		return filed_index[dataMap[filed]];
+	}
 	return dataMap[filed];
 };
 /**

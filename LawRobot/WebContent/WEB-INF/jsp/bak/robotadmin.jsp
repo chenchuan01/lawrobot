@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://sys.com/sys" prefix="sys"%>
-
+<%@include file="common/taglib.jspf" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,9 +107,37 @@
 <script src="${ctx }/js/util/dialogHintWin.js"></script> 
 <script src="${ctx }/js/util/loadPage.js"></script> 
 <script type="text/javascript">
+	var zone = '${sys:getStrVal("ZONE_INDEX")}';
+	var filed = '${sys:getStrVal("FILED_INDEX")}';
+	var zone_index={};
+	var filed_index={}
 	$(function(){
+		initZoneIndex();
+		initFiledIndex();
 		pageView('${ctx }/admin.do?view=questList');
 	});
+	function initZoneIndex(){
+		if(zone&&zone!=''){
+			var zones = zone.split(';');
+			for(var i=0;i<zones.length;i++){
+				if(zones[i]&&zones[i]!=''){
+					var items=zones[i].split(':');
+					zone_index[items[0]]=items[1];
+				}
+			}
+		}
+	}
+	function initFiledIndex(){
+		if(filed&&filed!=''){
+			var fileds = filed.split(';');
+			for(var i=0;i<fileds.length;i++){
+				if(fileds[i]&&fileds[i]!=''){
+					var items=fileds[i].split(':');
+					filed_index[items[0]]=items[1];
+				}
+			}
+		}
+	}
 </script>
 </body>
 </html>
