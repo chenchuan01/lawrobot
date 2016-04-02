@@ -1,18 +1,15 @@
 ﻿/**ajax*/
 /*************Ajax封装***************/
 var ajaxData = function(url,dataArry,sucfun,errFun){
-	loadToggle();
 	$.ajax({
 		type:"POST",
 		url:url,
 		data:dataArry,
 		dataType:"json",
 		success:function(data){
-			loadToggle();
 			commonSuc(data,sucfun);
 		},
 		error:function(data){
-			loadToggle();
 			commonErr(data, errFun);
 		}
 	});
