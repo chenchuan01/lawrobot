@@ -91,7 +91,7 @@ function sysError(data){
 	clearThink();
 	setRobotImg('syserror');
 	if(data&&data.msg){
-		errorTip(data.msg);
+		error(data.msg);
 	}
 }
 

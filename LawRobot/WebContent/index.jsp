@@ -4,6 +4,7 @@
 <html style="height: 100%">
 <header>
 <title>welcome</title>
+<link rel="shortcut icon" href="img/robot_space.png">
 <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/style.css"/>
 <script type="text/javascript" src="js/jquery.min.js"></script>

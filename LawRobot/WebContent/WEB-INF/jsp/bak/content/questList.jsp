@@ -22,7 +22,7 @@ $(function(){page(1);});
 		  		<option value="${filed_index }">${filed_content }</option>
 		  	</c:forEach>
 		  </select>
-		  <input type="text" class="input-middle" name="userName" placeholder="查询关键字">
+		  <input type="text" class="input-middle" name="keywords" placeholder="查询关键字">
 		  <button type="button" class="btn btn-info search" onclick="page(1)" 
 		  	data-toggle="tooltip" data-placement="top" title="查询">
 		  <i class="icon icon-search"></i>
